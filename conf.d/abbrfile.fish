@@ -3,8 +3,8 @@
 #= Create abbreviations for every entry in `abbreviations`.
 #= [github/jabirali/ fish-abbrfile](https://github.com/jabirali/fish-abbrfile)
 #= > [github/jabirali/ fish-abbrfile](https://github.com/LaurentFough/fish-abbrfile)
-if [ -f $FDOTDIR/conf.d/fish_abbreviations.fish ]
-	for line in (sed '/^#/d' -f $FDOTDIR/conf.d/fish_abbreviations.fish)
+if [ -f $FDOTDIR/fish_abbreviations.fish ]
+	for line in (sed '/^#/d' -f $FDOTDIR/fish_abbreviations.fish)
 		set -l dict (string split ' ' -- $line)
 		if [ (count $dict) -ge 2 ]
       #= Abbreviation that should trigger expansion.
