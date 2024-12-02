@@ -3,8 +3,8 @@
 #= Create abbreviations for every entry in `abbreviations`.
 #= [github/jabirali/ fish-abbrfile](https://github.com/jabirali/fish-abbrfile)
 #= > [github/jabirali/ fish-abbrfile](https://github.com/LaurentFough/fish-abbrfile)
-if test -f {$FDOTDIR}/abbrs.d/__abbreviations.fish;
-	for line in ( sed '/^#/d' -f {$FDOTDIR}/abbrs.d/__abbreviations.fish )
+if test -f $FDOTDIR/abbrs.d/__abbreviations.fish;
+	for line in ( sed '/^#/d' -f $FDOTDIR/abbrs.d/__abbreviations.fish )
 		set -l dict ( string split ' ' -- $line )
 		if [ ( count $dict ) -ge 2 ]
 		#= Abbreviation that should trigger expansion.
@@ -27,7 +27,7 @@ if test -f {$FDOTDIR}/abbrs.d/__abbreviations.fish;
 		end
 		end
 		else if [ -n "$line" ]
-			echo "abbrfile: Could not parse \"$line\"."
+			echo "[abbrfile]: Could not parse \"$line\"."
 		end
 	end
 end
