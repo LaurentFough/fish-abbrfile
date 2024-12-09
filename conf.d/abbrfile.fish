@@ -3,8 +3,8 @@
 #= Create abbreviations for every entry in `abbreviations`.
 #= [github/jabirali/ fish-abbrfile](https://github.com/jabirali/fish-abbrfile)
 #= > [github/jabirali/ fish-abbrfile](https://github.com/LaurentFough/fish-abbrfile)
-if test -f $FDOTDIR/abbrs.d/__abbreviations.fish;
-	for line in ( sed '/^#/d' $FDOTDIR/abbrs.d/__abbreviations.fish )
+if test -f $FDOTDIR/abbr.d/__abbreviations.fconf;
+	for line in ( sed '/^#/d' $FDOTDIR/abbr.d/__abbreviations.fconf )
 		set -l dict ( string split ' ' -- $line )
 		if [ ( count $dict ) -ge 2 ]
 			#= Abbreviation that should trigger expansion.
@@ -14,7 +14,7 @@ if test -f $FDOTDIR/abbrs.d/__abbreviations.fish;
 			#= Only define abbreviation if the command is valid. This makes it
 			#= possible to e.g. abbreviate `vi` to `vim` on systems where `vim`
 			#= is available, but use the real `vi` if `vim` is not installed.
-			set -l cmd (string split --no-empty ' ' -- $val)
+			set -l cmd ( string split --no-empty ' ' -- $val )
 			if [ $cmd[1] = "sudo" ]
 			#= Sudo detected. Check the next argument to see how to proceed.
 				if type -q $cmd[2]
